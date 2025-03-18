@@ -18,9 +18,9 @@ int main (int argc, char *argv[])
     {
         char child_signal[1];
         read(my_pipe[1], child_signal, 1); // READ: yes, just read
+        printf("%d: received ping\n", getpid());
         write(my_pipe[1], "C", 1); // SEND: i am ur son
         close(my_pipe[1]); // CLOSE: son dont need to write
-        printf("%d: received ping\n", getpid());
         close(my_pipe[0]); // CLOSE: son dont need to read rn
     }
     else
