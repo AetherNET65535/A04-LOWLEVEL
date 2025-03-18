@@ -7,7 +7,7 @@ int main (int argc, char *argv[])
     //CHECK: is user enter argument samw with 1?
     if (argc != 1)
     {
-        fprinf(2, "USAGE: pingpong\n");
+        fprintf(2, "USAGE: pingpong\n");
         exit(1);
     }
 
@@ -28,9 +28,9 @@ int main (int argc, char *argv[])
         char parent_signal[1];
         write(my_pipe[1], "P", 1); // SEND: i am ur dad
         read(my_pipe[0], parent_signal, 1); // READ: just read, dad will wait son
-        close(my_pipe[0]); // CLOSE: dad dont need to read rn        
         printf("%d: received pong\n", getpid());
+        close(my_pipe[0]); // CLOSE: dad dont need to read rn        
         exit(0);
     }
-    
+}
 
