@@ -1,3 +1,6 @@
 #include "kernel/types.h"
 #include "kernel/stat.h"
-#include "user/
+#include "user/user.h"
+
+int main ()
+{
