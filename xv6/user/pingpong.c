@@ -7,7 +7,7 @@
 
 int main (int argc, char *argv[])
 {
-    //CHECK: is user enter argument samw with 1?
+    // CHECK: is user enter argument samw with 1?
     if (argc != 1)
     {
         fprintf(2, "USAGE: pingpong\n");
@@ -32,6 +32,7 @@ int main (int argc, char *argv[])
         close(c2p[READ]);
 
         printf("%d: Received Pong\n", getpid());
+        
         exit(0);
     }
     else if (pid == 0)
@@ -46,6 +47,7 @@ int main (int argc, char *argv[])
         
         write(c2p[WRITE], &signal, 1);
         close(c2p[WRITE]);
+
         exit(0);
     }
     else
