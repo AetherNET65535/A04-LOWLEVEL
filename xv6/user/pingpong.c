@@ -15,13 +15,14 @@ int main (int argc, char *argv[])
     pipe(my_pipe);
 
     char msg[32];
+    int len;
 
     if (fork() == 0) // CHILD
     {
         char child_signal[1];
 
         read(my_pipe[1], child_signal, 1); // READ: yes, just read
-        int len = sprintf(msg, "%d: received ping\n", getpid());
+        int len = snprintf(msg, "%d: received ping\n", getpid());
         write(1, msg, len);
         write(my_pipe[1], "C", 1); // SEND: i am ur son
 
@@ -34,7 +35,7 @@ int main (int argc, char *argv[])
 
         write(my_pipe[1], "P", 1); // SEND: i am ur dad
         read(my_pipe[0], parent_signal, 1); // READ: just read, dad will wait son
-        int len = sprintf(msg, "%d: received pong\n", getpid());
+        int len = snprintf(msg, "%d: received pong\n", getpid());
         write(1, msg, len);
 
         close(my_pipe[0]); // CLOSE: dad dont need to read rn        
