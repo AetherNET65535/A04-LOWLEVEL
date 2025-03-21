@@ -13,7 +13,7 @@ int main (int argc, char *argv[])
     
     // CHANGE: TO INTERGER, AND TO SECONDS
     int ticks = atoi(argv[1]);
-    int adjuested_ticks = ticks;
+    int adjusted_ticks = ticks * 10;
 
     // CHECK: if ticks smaller than 0, set it to 0
     if (adjusted_ticks < 0)
