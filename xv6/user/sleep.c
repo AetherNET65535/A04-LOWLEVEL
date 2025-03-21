@@ -11,17 +11,18 @@ int main (int argc, char *argv[])
         exit(1);
     }
     
-    // CHANGE: ASCII to INTERGER
+    // CHANGE: TO INTERGER, AND TO SECONDS
     int ticks = atoi(argv[1]);
+    int adjuested_ticks = ticks;
 
     // CHECK: if ticks smaller than 0, set it to 0
-    if (ticks < 0)
+    if (adjusted_ticks < 0)
     {
-        ticks = 0;
+        adjusted_ticks = 0;
     }
 
     // CALL: sleep (thank you xv6, this make this code ez 5000%)
-    sleep(ticks);
+    sleep(adjusted_ticks);
 
     exit(0);
 }
