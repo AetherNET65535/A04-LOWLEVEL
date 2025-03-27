@@ -52,7 +52,7 @@ int main (int argc, char *argv[])
     }
     else
     {
-        fprintf(2, "USAGE: pingpong\n");
+        fprintf(stderr, "fork error\n");
         exit(1);
     }
 }
