@@ -21,6 +21,32 @@ void sieve_algo (int left[2])
     printf("prime: %d\n", prime);
     pipe(right);
 
+    if ((pid = fork()) > 0)
+    {
+        close(right[READ]);
+        
+        while(read(left[READ], &temp, sizeof(int))
+        {
+            if (temp % prime != 0)
+            {
+                write(right[WRITE], &temp, sizeof(int));
+            }
+        }
+        close(right[WRITE]);
+        wait(0);
+        exit(0);
+    }
+    else if (pid == 0)
+    {
+        sieve_algo(right);
+        exit(0);
+    }
+    else 
+    {
+        fprintf(stderr, "fork error\n");
+        exit(0); 
+    }
+
 int main(int argc, char* argv[])
 {
     int pid, p[2];
@@ -39,7 +65,7 @@ int main(int argc, char* argv[])
         wait(0); // wait child kill himself
         exit(0); // kys
     }
-    else if ((pid = fork()) == 0) // child
+    else if (pid == 0) // child
     {
         sieve_algo(p);
         exit(0);
