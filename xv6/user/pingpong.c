@@ -52,7 +52,7 @@ int main (int argc, char *argv[])
     }
     else
     {
-        fprintf(stderr, "fork error\n");
+        fprintf(2, "fork error\n");
         exit(1);
     }
 }

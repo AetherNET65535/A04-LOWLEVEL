@@ -1,4 +1,4 @@
-#include "kernel/type.h"
+#include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
 
@@ -43,7 +43,7 @@ void sieve_algo (int left[2])
     }
     else 
     {
-        fprintf(stderr, "fork error\n");
+        fprintf(2, "fork error\n");
         exit(0); 
     }
 
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
     }
     else // 5000% have error
     {
-        fprintf(stderr, "fork error\n");
+        fprintf(2, "fork error\n");
         exit(0);
     }
 
