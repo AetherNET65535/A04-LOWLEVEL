@@ -1,3 +1,5 @@
+##pragma GCC diagnostic ignored "-Winfinite-recursion"
+
 #include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
@@ -49,6 +51,7 @@ void sieve_algo (int left[2])
         close(left[READ]);
         exit(1);
     }
+    return;
 }
 
 int main(int argc, char* argv[])
