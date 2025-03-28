@@ -5,8 +5,7 @@
 #define READ 0
 #define WRITE 1
 
-##pragma GCC diagnostic ignored "-Winfinite-recursion"
-
+#pragma GCC diagnostic ignored "-Winfinite-recursion"
 void sieve_algo (int left[2])
 {
     close(left[WRITE]);
