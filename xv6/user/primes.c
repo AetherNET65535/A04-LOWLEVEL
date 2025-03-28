@@ -18,6 +18,16 @@ void sieve_algo (int left[2], int depth)
         close(left[READ]);
         exit(0);
     }
+    
+    // if too deep (prob will stackoverflow, kinda useless func, but just add, 保险起见)
+    if (depth > 16) // 15 is enough, but 16 is more romance
+    {
+        fprintf(2, "my_stackoverflow(not real, but have error, cuz too deep)\n");
+        close(right[READ]);
+        close(right[WRITE]);
+        close(left[READ]);
+        exit(1);
+    }
 
     printf("prime: %d\n", prime);
     pipe(right);
@@ -30,7 +40,10 @@ void sieve_algo (int left[2], int depth)
         {
             if (temp % prime != 0)
             {
-                write(right[WRITE], &temp, sizeof(int));
+                if (write(right[WRITE], &temp, sizeof(int)) != sizeof(int))
+                {
+                    fprintf(2, "write error\n");
+                }
             }
         }
         close(right[WRITE]);
@@ -40,6 +53,7 @@ void sieve_algo (int left[2], int depth)
     else if (pid == 0)
     {
         close(left[READ]);
+        close(left[WRITE]);
         sieve_algo(right, depth + 1);
         exit(0);
     }
