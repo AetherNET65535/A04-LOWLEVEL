@@ -1,11 +1,11 @@
-##pragma GCC diagnostic ignored "-Winfinite-recursion"
-
 #include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
 
 #define READ 0
 #define WRITE 1
+
+##pragma GCC diagnostic ignored "-Winfinite-recursion"
 
 void sieve_algo (int left[2])
 {
