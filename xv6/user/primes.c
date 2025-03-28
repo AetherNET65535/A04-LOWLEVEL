@@ -12,7 +12,7 @@ void sieve_algo (int left[2])
     int prime, temp, pid, right[2];
     
     // if cant read any number...QAQ
-    if (read(left[READ], &prime, sizeof(int) == 0)
+    if (read(left[READ], &prime, sizeof(int) == 0))
     {
         close(left[READ]);
         exit(0);
@@ -25,7 +25,7 @@ void sieve_algo (int left[2])
     {
         close(right[READ]);
         
-        while(read(left[READ], &temp, sizeof(int))
+        while(read(left[READ], &temp, sizeof(int)))
         {
             if (temp % prime != 0)
             {
@@ -43,9 +43,13 @@ void sieve_algo (int left[2])
     }
     else 
     {
-        fprintf(2, "fork error\n");
-        exit(0); 
+        fprintf(2, "fork error...\n");
+        close(right[READ]);
+        close(right[WRITE]);
+        close(left[READ]);
+        exit(1);
     }
+}
 
 int main(int argc, char* argv[])
 {
@@ -56,7 +60,7 @@ int main(int argc, char* argv[])
     {
         close(p[READ]);
         
-        for (i = 2; i <= 35; i++)
+        for (int i = 2; i <= 35; i++)
         {
              write(p[WRITE], &i, sizeof(int));
         }
@@ -73,7 +77,8 @@ int main(int argc, char* argv[])
     else // 5000% have error
     {
         fprintf(2, "fork error\n");
-        exit(0);
+        exit(1);
     }
+}
 
         
