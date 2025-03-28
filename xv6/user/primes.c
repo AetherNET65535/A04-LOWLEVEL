@@ -6,7 +6,7 @@
 #define WRITE 1
 
 #pragma GCC diagnostic ignored "-Winfinite-recursion"
-void sieve_algo (int left[2])
+void sieve_algo (int left[2], int depth)
 {
     close(left[WRITE]);
 
@@ -39,7 +39,8 @@ void sieve_algo (int left[2])
     }
     else if (pid == 0)
     {
-        sieve_algo(right);
+        close(left[READ]);
+        sieve_algo(right, depth + 1);
         exit(0);
     }
     else
@@ -73,7 +74,7 @@ int main(int argc, char* argv[])
     }
     else if (pid == 0) // child
     {
-        sieve_algo(p);
+        sieve_algo(p, 1);
         exit(0);
     }
     else // 5000% have error
