@@ -53,7 +53,7 @@ void sieve_algo (int left[2], int depth)
     else if (pid == 0)
     {
         close(left[READ]);
-        close(left[WRITE]);
+        close(right[WRITE]);
         sieve_algo(right, depth + 1);
         exit(0);
     }
