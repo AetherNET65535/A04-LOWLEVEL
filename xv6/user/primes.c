@@ -12,7 +12,7 @@ void sieve_algo (int left[2])
     int prime, temp, pid, right[2];
     
     // if cant read any number...QAQ
-    if (read(left[READ], &prime, sizeof(int) == 0))
+    if (read(left[READ], &prime, sizeof(int)) == 0)
     {
         close(left[READ]);
         exit(0);
